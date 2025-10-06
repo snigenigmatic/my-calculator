@@ -5,6 +5,38 @@ git status
 git add tests/unit/test_calculator.py
 
 git status
+git commit -m "Added and Tested with negative values"
+
+git status 
+git push origin main
+git status
+
+Ruff Linting Commands:
+# Check for linting issues
+ruff check src/ tests/
+
+# Fix auto-fixable issues
+ruff check src/ tests/ --fix
+
+# Format code
+ruff format src/ tests/
+
+# Check if code is already formatted
+ruff format src/ tests/ --check
+
+Branching in Git:
+git branch
+
+git branch -a 
+
+git branch feature/multi-div
+git branchthub.com/v-s-v-i-s-h-w-a-s/my-calci.git
+
+Adding and Committing Changes in Git:
+git status
+git add tests/unit/test_calculator.py
+
+git status
 git commit -m “Added and Tested with negative values”
 
 git status 

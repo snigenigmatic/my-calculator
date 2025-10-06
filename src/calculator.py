@@ -23,7 +23,7 @@ def multiply(a, b):
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         raise TypeError("Both arguments must be numbers")
 
-    print(f"Multiplying {a} × {b}")  # Added logging
+    print(f"Multiplying {a} x {b}")  # Added logging
     result = a * b
     print(f"Result: {result}")
     return result
@@ -49,13 +49,29 @@ def power(a, b):
     """Raise a to the power of b"""
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         raise TypeError("Both arguments must be numbers")
+
+    # Check for potentially problematic cases that would result in very large numbers
+    # Rough heuristic: if b is very large, it's likely to cause overflow
+    if isinstance(a, int) and isinstance(b, int) and b > 0 and b > 10000:
+        raise OverflowError("Result too large to represent")
+
     try:
         result = a**b
-        if result == float("inf"):
+        if result == float("inf") or result == float("-inf"):
             raise OverflowError("Result too large to represent")
-        return result
+
+        # Try to convert to string to detect if it's too large for representation
+        try:
+            str(result)
+        except ValueError as str_e:
+            if "Exceeds the limit" in str(str_e) and "integer string conversion" in str(
+                str_e
+            ):
+                raise OverflowError("Result too large to represent") from None
     except OverflowError:
-        raise OverflowError("Power operation resulted in overflow")
+        raise OverflowError("Result too large to represent") from None
+    else:
+        return result
 
 
 def sqrt(a):

@@ -1,0 +1,105 @@
+[project]
+name = "my-calculator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bandit>=1.8.6",
+    "black>=25.9.0",
+    "click>=8.3.0",
+    "pylint>=3.3.9",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "requests>=2.32.5",
+    "ruff>=0.13.3",
+]
+
+[tool.ruff]
+# Exclude common directories that shouldn't be linted
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black's default line length
+line-length = 88
+
+# Assume Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint]
+# Enable comprehensive set of rules
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # Pyflakes
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "I",    # isort
+    "N",    # pep8-naming
+    "C",    # flake8-comprehensions
+    "PIE",  # flake8-pie
+    "T20",  # flake8-print
+    "RET",  # flake8-return
+    "SLF",  # flake8-self
+    "ARG",  # flake8-unused-arguments
+    "PTH",  # flake8-use-pathlib
+    "ERA",  # eradicate
+    "PD",   # pandas-vet
+    "PGH",  # pygrep-hooks
+    "PL",   # Pylint
+    "TRY",  # tryceratops
+    "FLY",  # flynt
+    "PERF", # Perflint
+    "FURB", # refurb
+    "RUF",  # Ruff-specific rules
+]
+
+# Rules to ignore
+ignore = [
+    "T20",     # Allow print statements (useful for logging in this calculator)
+    "TRY003",  # Allow long exception messages
+    "TRY301",  # Allow inline raises instead of abstracting to inner functions
+    "PLR2004", # Allow magic values in comparisons
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Use double quotes for strings.
+quote-style = "double"
+
+# Indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Automatically detect the appropriate line ending.
+line-ending = "auto"
