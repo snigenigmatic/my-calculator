@@ -2,6 +2,7 @@
 Calculator Module - Basic arithmetic operations with history tracking
 Students will extend this with more functions
 """
+
 from datetime import datetime
 from typing import Any
 
@@ -32,11 +33,11 @@ class CalculatorHistory:
             timestamp = datetime.now()
 
         entry = {
-            'operation': operation,
-            'operands': operands.copy(),
-            'result': result,
-            'timestamp': timestamp,
-            'expression': self._format_expression(operation, operands, result)
+            "operation": operation,
+            "operands": operands.copy(),
+            "result": result,
+            "timestamp": timestamp,
+            "expression": self._format_expression(operation, operands, result),
         }
         self._history.append(entry)
 
@@ -78,7 +79,7 @@ class CalculatorHistory:
         """Get the result of the last calculation."""
         if not self._history:
             return None
-        return self._history[-1]['result']
+        return self._history[-1]["result"]
 
     def clear_history(self) -> int:
         """Clear all history entries.

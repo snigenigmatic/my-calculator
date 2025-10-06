@@ -1,6 +1,7 @@
 """
 Test history functionality for the calculator
 """
+
 from datetime import datetime
 
 import pytest
