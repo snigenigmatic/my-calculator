@@ -290,11 +290,11 @@ class TestHistoryDataIntegrity:
     def test_history_entries_consistent(self):
         """Test that history entries are consistently formatted."""
         add(5, 3)
-        
+
         # Get history multiple times
         history1 = get_calculation_history()
         history2 = get_calculation_history()
-        
+
         # Should have same content
         assert len(history1) == len(history2) == 1
         assert history1[0]["expression"] == history2[0]["expression"]
